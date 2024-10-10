@@ -1,129 +1,65 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/dcf3d5d0-a4a4-486f-bd9a-64b612392aad/deploy-status)](https://app.netlify.com/sites/brave-bell-c85a34/deploys)
+# Kording lab page
 
-# Research lab website template
+This is repository for [Kording lab page](http://kordinglab.com/). We use Jekyll to run our Github page. We are welcome for other people to contribute to our site not just lab members. Feel free to fork and pull-request!
 
-This website is built with [Jekyll](https://jekyllrb.com/).
-It is derived from the great template provided by the
-[Allan Lab](https://www.allanlab.org/aboutwebsite.html), at Leiden University.
+## Run the page locally using Jekyll
 
-## Setup
+To run locally, follow instruction [here](https://jekyllrb.com/) to install Jekyll then run `jekyll serve` to see in `localhost:4000`. Here is a brief install guidelines.
 
-``` bash
-brew install ruby
-gem install bundler jekyll
+```bash
+sudo gem install jekyll
+sudo gem install rouge
+jekyll serve
 ```
 
-Clone this repository, then install the dependencies:
+## Editing the lab website
 
-``` bash
-bundle install
-```
+Below, we explain how to edit the lab webpage
 
-## Run
+### Add posts
 
-Run the local webserver with:
+It's very easy to add post. All the posts are located in `_posts` folder. It arrangement is based on
+date. Each post can be written in markdown format. You just have to state headers before writing: `title`, `description` and `categories`. `description` will be shown when you share on social media like Facebook or twitter. See the following headers:
 
-``` bash
-bundle exec jekyll serve
-```
-
-## Contribute
-
-### Add a new member
-
-New members are stored as markdown files under
-[_pages/team/_posts](_pages/team/_posts).
-
-Each new member `.md` file must look like this:
-
-``` yaml
+``` markdown
 ---
-layout: member
-category: staff
-title: Researcher Name
-image: researcher.png
-role: Lab Director
-permalink: 'team/researcher-name'
-social:
-    twitter: https://twitter.com/
-    linkedin: https://www.linkedin.com/
-    google-scholar: https://scholar.google.fr/
-    github: https://github.com/
-    website:
-    orcid: https://orcid.org/
-    research-gate: https://www.researchgate.net/
-education:
- - Education
+title: Summer School in Computational Sensory-Motor Neuroscience (CoSMo)
+description: all links to CoSMo summer school in computational neuroscience materials
+categories: scientists
 ---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-cupidatat non proident, sunt in culpa qui officia deserunt
-mollit anim id est laborum.
 ```
 
-### Add a new publication
+We have 4 categories: `scientists`, `students`, `discussion`, `blog` you can choose and this will be rendered to different location.
 
-Publications are stored as `.json` file under
-[_data/publications.json](_data/publications.json).
-This json file is exported from [Zotero](https://www.zotero.org/)
-bibliography tool.
+### How to add posts
 
-Just add a new entry to the list like this:
+- **Directly edit on Github**, you can simply go to `_posts` and click `New file` then put some markdown file e.g. `2016-02-03-post-name.md` and start writing blog post. Github also allows you to preview it so it's nice for people who don't want to clone the repo. 
 
-``` json
-{
-  "id": "http://zotero.org/groups/2386072/items/NU9LTX7C",
-  "type": "article-journal",
-  "title": "Foo",
-  "container-title": "IEEE Transactions on Medical Imaging",
-  "page": "448-459",
-  "volume": "38",
-  "issue": "2",
-  "source": "IEEE Xplore",
-  "abstract": "Bar",
-  "DOI": "10.1109/TMI.2018.2865709",
-  "author": [
-    {
-      "family": "",
-      "given": ""
-    },
-  ],
-  "issued": {
-    "date-parts": [
-      [
-        "2019",
-        2
-      ]
-    ]
-  }
-}
+- **Clone the repository**, kind of the same as directly add post on Github. You just have to clone the repository. Then add new post file, commit and push to the repo.
+
+The changes will take approximately half a minute to render. You can see the new posts or changes on [kordinglab.com](http://kordinglab.github.io/)!
+
+### Add yourself
+
+You can add yourself to the page in `_people` folder just create file name `<firstname>_<lastname>.md` in the folder. We require few line of header before you start writing your own page. See the following for the header
+
+``` markdown
+---
+name: Eva Dyer
+position: postdoc
+avatar: eva.jpg
+twitter:
+joined: 2014
+---
 ```
+
+If you don't have information, just leave it blank. The avatar will bring photo from `images/people` folder and display it on people page. 
+For lab position, you can choose position from 4 classes including `postdoc`, `gradstudent`, `visiting`, `others` (so called Honorary members). Position will put you into section that you choose.
+
+### Add new publications
+
+All publications from the lab are located in `publications.md`. Please upload new publication on your own!
 
 ### Add news
 
-News are stored as `.yml` file under [_data/news.yml](_data/news.yml).
-
-An entry looks like the following:
-
-```yaml
-- date: 03/09/19
-  title: "Something great"
-  tags:
-    - some
-    - tags
-  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Eu turpis egestas pretium aenean. Luctus venenatis lectus magna fringilla
-    urna porttitor. Lorem ipsum dolor sit amet. Pellentesque massa placerat
-    duis ultricies. Commodo viverra maecenas accumsan lacus vel.
-```
-
-### Edit template
-
-We use [Bootstrap](https://getbootstrap.com/) for designing the website.
-Feel free to modify either the [_pages](_pages/) or the
-[_layouts](_layouts/) components.
+All news presented in the front page by editing `_data/news.yml`. There are some symbol that cannot be used directly e.g. `:`, be careful
