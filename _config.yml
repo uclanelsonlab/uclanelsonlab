@@ -1,113 +1,43 @@
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
+# which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: WI+RE
-email: uclawire@g.ucla.edu
-description: >- # this means to ignore newlines until "baseurl:"
-  Quick and practical research and writing tutorials, collaboratively designed by students at UCLA.
-baseurl: "/research-tips" # the subpath of your site, e.g. /blog
-url: "https://uclalibrary.github.io/research-tips" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: UCLALibrary
-github_username:  uclalibrary/research-tips
-facebook_username: uclalibrary
-permalink: /:collection/:title/
+title: Research Lab
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: ""
+url: ""
 
-# Collections
-collections:
-    posts:
-        output: true
-        permalink: /sandbox/:title/
-    workshops:
-        output: true
-        permalink: /workshops/:title/
-    tutorials:
-        output: true
-        permalink: /:title/
-        sort_by: sort-weight
-    handouts:
-        output: true
-        permalink: /handouts/:title/
-    team-members:
-        output: true
-        permalink: /about/creative-team/:title/
-    embeds:
-        output: true
-        permalink: /embeds/:path/
-    
-# Defaults
-author: "The WI+RE Team" # a default to place when author field is not specified
+include:
+  - .htaccess
+  - _pages
 
-defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      background: "/assets/images/backgrounds/jans-steps-background.jpg"
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      background: "/assets/images/sand.jpg"
-  -
-    scope:
-        path: ""
-        type: "workshops"
-    values:
-        layout: "workshop" 
-        background: "/assets/images/backgrounds/jans-steps-background.jpg"
-  -
-    scope:
-        path: ""
-        type: "tutorials"
-    values:
-        layout: "tutorial" 
-        background: "/assets/images/backgrounds/jans-steps-background.jpg"
-  -
-    scope:
-        path: ""
-        type: "handouts"
-    values:
-        layout: "handout" 
-        background: "/assets/images/backgrounds/jans-steps-background.jpg"
-  -
-    scope:
-        path: ""
-        type: "team-members"
-    values:
-        layout: "team-member" 
-        background: "/assets/images/backgrounds/art-creative-flying-17679-3000.jpg"
+sass:
+  sass_dir: _sass
 
-# Build settings
+# Conversion
 markdown: kramdown
-# theme: jekyll-theme-clean-blog
-# adapated from https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll
-plugins:
-  - jekyll-feed
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+  parse_block_html: true # default for kramdown is false. This will enable using Markdown links
+

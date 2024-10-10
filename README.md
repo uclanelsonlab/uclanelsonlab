@@ -1,70 +1,129 @@
-# Hello!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dcf3d5d0-a4a4-486f-bd9a-64b612392aad/deploy-status)](https://app.netlify.com/sites/brave-bell-c85a34/deploys)
 
-Welcome to the code repository for the WI+RE (Writing Instruction + Research Education) website!
+# Research lab website template
 
-The code here creates this public webpage: https://uclalibrary.github.io/research-tips/
+This website is built with [Jekyll](https://jekyllrb.com/).
+It is derived from the great template provided by the
+[Allan Lab](https://www.allanlab.org/aboutwebsite.html), at Leiden University.
 
-# Want to suggest a change? Have feedback for WI+RE? Let us know!
+## Setup
 
-To suggest a change or an update for our website, you can:
+``` bash
+brew install ruby
+gem install bundler jekyll
+```
 
-1. email us (from https://uclalibrary.github.io/research-tips/contact/ ) 
-2. submit an issue: https://github.com/UCLALibrary/research-tips/issues
-3. Make the change yourself and submit a pull request! If you would like to do this, but are not already familiar with github pages, please review https://guides.github.com/features/pages/ and then read the following info about how this site is structured.
+Clone this repository, then install the dependencies:
 
-# WI+RE site structure
+``` bash
+bundle install
+```
 
-## Key folders:
+## Run
 
-Folders with an underscore in front of the name (e.g., `_data`) are special in github pages. Here's an overview of what some of these folders do on the WI+RE site:
+Run the local webserver with:
 
-### `_tutorials` 
+``` bash
+bundle exec jekyll serve
+```
 
-This folder contains the files for each of the tutorials that appear at https://uclalibrary.github.io/research-tips/tutorials/ 
+## Contribute
 
-Editing a file in this folder may update several things on the site at the same time, including:
+### Add a new member
 
-* the tutorial itself
-* any other pages - e.g., the "Tutorials and Videos" page) that lists tutorials
+New members are stored as markdown files under
+[_pages/team/_posts](_pages/team/_posts).
 
-Creating a new file in this folder (using the proper file naming convention and metadata info) will create a new tutorial.
+Each new member `.md` file must look like this:
 
+``` yaml
+---
+layout: member
+category: staff
+title: Researcher Name
+image: researcher.png
+role: Lab Director
+permalink: 'team/researcher-name'
+social:
+    twitter: https://twitter.com/
+    linkedin: https://www.linkedin.com/
+    google-scholar: https://scholar.google.fr/
+    github: https://github.com/
+    website:
+    orcid: https://orcid.org/
+    research-gate: https://www.researchgate.net/
+education:
+ - Education
+---
 
-### `_handouts` and `_workshops` and `_team-members`
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+```
 
-These folders work the same way as `_tutorials` - editing a file in one of these folders will update the associated page and may also update any lists where that item is mentioned.
+### Add a new publication
 
+Publications are stored as `.json` file under
+[_data/publications.json](_data/publications.json).
+This json file is exported from [Zotero](https://www.zotero.org/)
+bibliography tool.
 
-### Super important: All about `_site`:
+Just add a new entry to the list like this:
 
-Whenever you make a change to one of the files in our repository, github regenerates our entire website. It puts all of the files it creates in a special folder called _site.
+``` json
+{
+  "id": "http://zotero.org/groups/2386072/items/NU9LTX7C",
+  "type": "article-journal",
+  "title": "Foo",
+  "container-title": "IEEE Transactions on Medical Imaging",
+  "page": "448-459",
+  "volume": "38",
+  "issue": "2",
+  "source": "IEEE Xplore",
+  "abstract": "Bar",
+  "DOI": "10.1109/TMI.2018.2865709",
+  "author": [
+    {
+      "family": "",
+      "given": ""
+    },
+  ],
+  "issued": {
+    "date-parts": [
+      [
+        "2019",
+        2
+      ]
+    ]
+  }
+}
+```
 
-Key thing: Do NOT make edits or create files in this folder!
+### Add news
 
-Why not? Because they will just get over-written the next time someone makes a change to the site. Instead of editing the file in `_site`, find the file that generates it, and edit that!
+News are stored as `.yml` file under [_data/news.yml](_data/news.yml).
 
-For example, let's say you found a typo on this page: https://uclalibrary.github.io/research-tips/workshops/avoiding-plagiarism/  --- which of the following files would you edit to fix it and why?
+An entry looks like the following:
 
-* `/_site/workshops/avoiding-plagiarism/`
-* `_workshops/2019-01-06-avoiding-plagiarism.markdown`
+```yaml
+- date: 03/09/19
+  title: "Something great"
+  tags:
+    - some
+    - tags
+  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Eu turpis egestas pretium aenean. Luctus venenatis lectus magna fringilla
+    urna porttitor. Lorem ipsum dolor sit amet. Pellentesque massa placerat
+    duis ultricies. Commodo viverra maecenas accumsan lacus vel.
+```
 
-Why?
+### Edit template
 
-Other `_`underscore folders
-
-* `_data`: this folder contains data that we leverage in other areas of the site, e.g., our statistics data is in the stats.yml file and we keep info about our publications in publications.yml
-* `_embeds` - we haven't been using this as much since H5P came around - but this was a place that allowed us to create "embed-able" versions of our tutorials. Some of these embeds are still in use by people at other institutions so we keep them around.
-* `_sass` - a special folder for files related to the design of the site - we don't edit it much unless we are working on the look and feel of the site.
-
-
-### What about folders without an underscore?
-
-These are for the structural pages of our site - e.g., the homepage, the about page, the wire way, etc. You can edit them just like the files in _tutorials and _workshops -- editing these pages will cause the _site folder to regenerate with your changes.
-
-## Creating a new workshop or tutorial
-
-See https://github.com/UCLALibrary/research-tips/blob/gh-pages/tutorial-workshop-metadata-template.md for a template to follow when creating a new workshop or tutorial.
-
-# FYI
-
-the theme for this site was adapted from: https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll
+We use [Bootstrap](https://getbootstrap.com/) for designing the website.
+Feel free to modify either the [_pages](_pages/) or the
+[_layouts](_layouts/) components.

@@ -1,53 +1,35 @@
-<!-- Footer -->
+<div id="footer" class="panel">
+  <div class="panel-footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+				<p>{{ site.title }}</p>
+				<img class="img-fluid" src="{{ site.baseurl }}/images/logo/lab-logo.png"
+				     style="max-width: 100px;">
+			</div>
 
-<hr>
+			<div class="col-sm-4">
+				<p>Links</p>
+				<ul class="list-unstyled">
+					<li><a href="https://github.com/ericdaat/research-lab-website">Github Repository</a></li>
+					<li><a href="">Link</a></li>
+					<li><a href="">Link</a></li>
+					<li><a href="">Link</a></li>
+				</ul>
+			</div>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <ul class="list-inline text-center">
-          {% if site.twitter_username %}
-          <li class="list-inline-item">
-            <a href="https://www.twitter.com/{{ site.twitter_username }}" target="_blank" aria-label="{{ site.title }} Twitter account">
-              <span class="fa-stack fa-2x">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-            </span>
-            </a>
-          </li>
-          {% endif %}
-          {% if site.facebook_username %}
-          <li class="list-inline-item">
-            <a href="https://www.facebook.com/{{ site.facebook_username }}" target="_blank" aria-label="{{ site.title }} Facebook account">
-                <span class="fa-stack fa-2x">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
-            </span>
-            </a>
-          </li>
-          {% endif %}
-          {% if site.github_username %}
-          <li class="list-inline-item">
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" aria-label="{{ site.title }} Github repository">
-              <span class="fa-stack fa-2x">
-                <i class="fas fa-circle fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-            </span>
-            </a>
-          </li>
-          {% endif %}
-        </ul>
-        <p class="copyright text-muted">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/us/" target="_blank"  aria-label="Creative Commons Attribution-NonCommercial-ShareAlike"><i class="fab fa-creative-commons  fa-3x"></i><i class="fab fa-creative-commons-by fa-3x"></i><i class="fab fa-creative-commons-nc fa-3x"></i><i class="fab fa-creative-commons-share fa-3x"></i></a><br>
-            All content on this site is Creative Commons Attribution-NonCommercial-ShareAlike by  {{ site.author }} {{ 'now' | date: "%Y" }}</p>
-          <p class="text-center">The WI+RE team is grateful for the ongoing support of UCLA Library.</p>
-          <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                  <img src="{{ '/assets/images/brand/Uxd_Blu_A_Library_300.png' | relative_url }}" alt="UCLA Library Logo" style="max-height: 75px;">
-              </li>
-          </ul>
-      </div>
-    </div>
+			<div class="col-sm-4">
+				<p>Contact</p>
+				<p>Some Address</p>
+			</div>
+		</div>
+
+		<div class="row mt-3">
+			<p class="text-center">Copyright, 2019</p>
+		</div>
+	</div>
   </div>
-</footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/js/bootstrap.min.js"></script>

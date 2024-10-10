@@ -1,119 +1,19 @@
 <head>
-<!-- Global site tag (gtag.js) - Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T2SXV2');</script>
-<!-- End Google Tag Manager -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-
-  scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }} - {% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="stylesheet" href="{{ '/css/main.css' | prepend: site.baseurl | prepend: site.url}}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="shortcut icon" type ="image/x-icon" href="{{ site.url }}{{ site.baseurl }}/images/favicon.ico">
+  <script src="https://kit.fontawesome.com/a24320d871.js" crossorigin="anonymous"></script>
 
-  <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }}
-    {% else %}{{ site.title | escape }}{% endif %}
-  </title>
-
-  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-
-    <!-- Metadata for Social and Other things -->
-    
-    <meta property="og:site_name" content="{{ site.title }} - {{ site.description }}"/>
-    <meta property="og:title" content="{{ page.title }}"/>
-    <meta property="og:description" content="{{ page.description }}"/>
-    {% if page.thumbnail %}
-        <meta property="og:image" content="{{ page.thumbnail | prepend: site.url }}">
-    {% elsif page.profile %}
-        <meta property="og:image" content="{{ page.profile | prepend: site.url }}">
-    {% elsif page.background %}
-        <meta property="og:image" content="{{ page.background | prepend: site.url }}">
-    {% endif %}
-    <meta property="og:type" content="education"/>
-    
-  <!-- Zotero/DC metadata -->
-    <!-- this captures the list of team member names from site.team-members -->
-          {% capture member-name-list %}{{ site.team-members | map: 'username' | split: ',' }}{% endcapture %}
-    <!-- -->
-    
-    <meta name="DC.title" content="{{ page.title }}" />
-    
-    <!-- website title -->
-    <meta name="DC.source" content="{{ site.title }} - {{ site.description }}" />
-    
-    <!-- authors -->
-    {% if page.authors %}
-                {% for authorname in page.authors %}
-                    {% if member-name-list contains authorname %}
-                        {% for team-member in site.team-members %}
-                            {%- if authorname == team-member.username -%}
-                                <meta name="DC.creator" content="{{ team-member.firstname}} {{ team-member.lastname }}" />
-                                
-                            {%- endif -%}
-                        {% endfor %}
-                    {% else %}
-                        <meta name="DC.creator" content="{{ authorname }}" />
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <meta name="DC.creator" content="{{ site.author }}" />
-    {% endif %}
-    
-    <!-- contributors -->
-        {% if page.contributors %}
-                    {% for contributorname in page.contributors %}
-                        {% if member-name-list contains contributorname %}
-                            {% for team-member in site.team-members %}
-                                {%- if contributorname == team-member.username -%}
-                                    <meta name="DC.contributor" content="{{ team-member.firstname}} {{ team-member.lastname }}" />
-                                {%- endif -%}
-                            {% endfor %}
-                        {% else %}
-                            <meta name="DC.contributor" content="{{ contributorname }}" />
-                        {% endif %}
-                    {% endfor %}
-      {% endif %}
-    <!-- date -->
-    {% if page.date %}
-        <meta name="DCterms.issued" content="{{ page.date | date: '%B %d, %Y' }}" />
-    {% endif %}
-    
-    <!-- abstract -->
-    {% if page.description %}
-        <meta name="DCterms.abstract" content="{{ page.description }}" />
-    {% endif %}
-
-    <!-- website type -->
-        <meta name="DC.Type" content="{{ page.layout }}" />
-
-    <!-- rights -->
-        <meta name="DC.rights" content="Creative Commons Attribution-NonCommercial-ShareAlike" />
-
-    <!-- end Zotero/DC metadata -->
-    
-    
-  <!-- Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-  <!-- icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    
-  <!-- CSS -->
-    {% if page.materialize %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    {% endif %}
-    
-    <link rel="stylesheet" href="{{"/assets/vendor/bootstrap/css/bootstrap.min.css" | relative_url }}">
-    
-    <!-- main css -->
-  <link rel="stylesheet" href="{{"/assets/main.css" | relative_url }}">
-
-<!-- custom stylesheet -->
-    <link rel="stylesheet" href="{{"/assets/custom.css" | relative_url }}">
-<!-- -->
-    
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+{% if jekyll.environment == 'production' %}
+{% include analytics.html %}
+{% endif %}
 
 </head>
+
+
+
